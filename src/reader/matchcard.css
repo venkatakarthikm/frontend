@@ -1,0 +1,57 @@
+.match-container {
+  overflow-x: auto;
+  white-space: nowrap; /* Prevents cards from wrapping to new lines */
+}
+
+.match-card {
+  display: inline-block;
+  width: auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.match-info {
+  padding: 15px;
+}
+
+.match-name {
+  font-size: 1.2rem;
+}
+
+.match-date {
+  font-size: 1rem;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.team-name {
+  font-size: 1rem;
+}
+
+.team-vs {
+  font-size: 1rem;
+  margin: 0 8px;
+}
+
+.team-score {
+  font-size: 1rem;
+}
+
+.match-status {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: #007bff;
+}

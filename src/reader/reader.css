@@ -1,0 +1,32 @@
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav {
+  background-color: #1e1c1c; /* Make the background transparent */
+  top: 0;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between; /* Distribute items evenly */
+  align-items: center; /* Vertically center items */
+  padding: 5px 9px; /* Reduced padding for top and bottom */
+}
+
+nav li {
+  padding: 10px;
+}
+
+nav p {
+  color: white; /* Text color for the username */
+  margin: 0; /* Remove any extra margins */
+  font-size: 12px; /* Adjust font size as needed */
+}
+
+nav li:last-child {
+  margin-left: auto; /* Push the logout button to the right */
+}

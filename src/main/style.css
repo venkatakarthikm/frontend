@@ -1,3 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  overflow: scroll;
+  background-color: #101010; /* Set a background color */
+}
+
+img {
+  display: block;
+}
+
+p {
+  margin-top: 2.5rem;
+  letter-spacing: 0.1rem;
+  color: rgb(127, 69, 69);
+}
+
+.main-content {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: -1; /* Behind the preloader */
+}
+
+#loader {
+  position: absolute;
+  top: 50%; /* Position from the top edge */
+  left: 50%; /* Position from the left edge */
+  transform: translate(-50%, -50%); /* Move the element back up and left by half its width and height */
+  width: 12rem;
+  height: 12rem;
+  min-width: 10rem;
+  min-height: 10rem;
+  background-color: transparent;
+}
+
+#ball,
+#bat {
+  position: absolute;
+}
+
+#ball {
+  width: 9%;
+  height: 15%;
+  left: 1.5rem;
+  top: 7.5rem;
+  z-index: 2;
+  animation: bounceBall 1s infinite;
+  animation-delay: 1s;
+}
+
+#bat {
+  width: 80%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: rotateX(-40deg);
+  animation: moveBat 1s infinite;
+}
+
+/* Bounce animation snippet from animate.css library with some changes */
+@keyframes bounceBall {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -60px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes moveBat {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  33% {
+    transform: rotateX(-25deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+
+
+
+
+
 ul, ol {
   margin: 0;
   padding: 0;
@@ -5,29 +139,39 @@ ul, ol {
 }
 
 nav {
-  background-color: #333;
+  background-color: #1e1c1c ;
   top: 0;
+  height: 58px;
   width: 100%;
 }
 
 nav a {
   display: inline-block;
-  padding: 15px 20px;
+  padding: 5px 10px;
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 nav a:hover {
-  background-color: #555;
+  background-color: #817f7f;
 }
 
 nav ul {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
 }
 
 nav li {
   display: inline;
-  margin-right: 20px;
+}
+
+nav li:nth-child(-n+4) {
+  margin-right: -22px; /* Adjust spacing between links */
+}
+
+nav li:nth-child(5) {
+  margin-left: 5px;
 }
 
 .dropdown {
@@ -38,9 +182,11 @@ nav li {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #333;
+  background-color: #1e1c1c; /* Make the dropdown background transparent */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
   min-width: 160px;
   z-index: 1;
+  right: 0; /* Align the right side of the dropdown with the parent */
 }
 
 .dropdown-content a {
@@ -90,60 +236,12 @@ textarea {
   box-sizing: border-box;
 }
 
-button[type='submit'] {
-  background-color: black;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button[type='submit']:hover {
-  background-color: #555;
-}
-
-.profile-container {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100%;
-border: 1px solid ;
-}
-
-.profile-card {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-max-width: 300px;
-margin: 10px auto;
-text-align: center;
-font-family: arial;
-border: 3px solid black;
-padding: 10px; 
-}
-
-.logoutButton {
-background-color: #f44336;
-border: none;
-color: white;
-padding: 10px 20px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-cursor: pointer;
-}
-
-.logoutButton:hover {
-background-color: #d32f2f; 
-}
-
-.logoutButton:focus {
-outline: none;
-}
-
 .not-found-container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
 .not-found-image {
@@ -162,26 +260,13 @@ outline: none;
 }
 
 
-.admin-section {
-  margin-top: 20px;
+.scroll-to-top-container {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 1000;
 }
 
-.admin-section h3 {
-  color: #007bff;
-}
-
-.recruiter-section {
-  margin-top: 20px;
-}
-
-.recruiter-section h3 {
-  color: #28a745;
-}
-
-.jobseeker-section {
-  margin-top: 20px;
-}
-
-.jobseeker-section h3 {
-  color: #dc3545;
+.scroll-to-top-button {
+  /* Style the button as needed */
 }
