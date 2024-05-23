@@ -27,7 +27,9 @@ export default function News() {
       const response = await axios.get(`${config.url}/viewmynewstodelete/${newsid}`);
       if (response.data != null) {
         localStorage.setItem('newsdata', JSON.stringify(response.data));
-        window.location.href = '/addcomment';
+        const c = '/addcomment/';
+        c.data.url = window.location.href;
+        c.server.update();
       }
     } catch (error) {
       console.error(error.message);
