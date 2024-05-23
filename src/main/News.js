@@ -5,6 +5,8 @@ import CommentIcon from '@mui/icons-material/Comment';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
+import { Link } from 'react-router-dom';
+
 import config from '../config';
 
 export default function News() {
@@ -27,9 +29,7 @@ export default function News() {
       const response = await axios.get(`${config.url}/viewmynewstodelete/${newsid}`);
       if (response.data != null) {
         localStorage.setItem('newsdata', JSON.stringify(response.data));
-        const c = '/addcomment/';
-        c.data.url = window.location.href;
-        c.server.update();
+        Link = '/addcomment';
       }
     } catch (error) {
       console.error(error.message);
