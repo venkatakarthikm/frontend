@@ -1,4 +1,4 @@
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import PublisherHome from './PublisherHome';
 import PageNotFound from '../main/PageNotFound';
@@ -18,6 +18,7 @@ import AddComment from './../main/AddComment';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PublisherLogin from './PublisherLogin';
 
 export default function PublisherNavbar() {
   const [publisherData, setPublisherData] = useState("");
@@ -41,8 +42,6 @@ export default function PublisherNavbar() {
     theme: "dark",
     });
 
-  const navigate = useNavigate();
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -54,7 +53,7 @@ export default function PublisherNavbar() {
     localStorage.removeItem('isPublisherLoggedIn');
     localStorage.removeItem('publisher');
     notifyInfo("Logged out !");
-    navigate('/publisherlogin');
+    // navigate("/publisherlogin");
     window.location.reload();
   };
 
@@ -81,9 +80,11 @@ export default function PublisherNavbar() {
             </div>
           </li>
           <li>
+            <Link to="/publisherlogin">
             <IconButton style={{ color: "white" }} onClick={handleLogout}>
               <LogoutSharpIcon />
             </IconButton>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -96,6 +97,7 @@ export default function PublisherNavbar() {
         <Route path="/publishnews" element={<PublishNews />} exact />
 
         <Route path="/addcomment" element={<AddComment/>} exact/>
+        <Route path="/publisherlogin" element={<PublisherLogin/>} exact />
 
         <Route path="*" element={<PageNotFound />} exact />
       </Routes>
