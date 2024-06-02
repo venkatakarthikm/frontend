@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Routes} from 'react-router-dom';
 import axios from 'axios';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import CommentIcon from '@mui/icons-material/Comment';
@@ -6,6 +7,7 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
 import config from '../config';
+import AddComment from './AddComment';
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -34,6 +36,9 @@ export default function News() {
     }
   };
 
+  <Routes>
+    <Route path="/addcomment" element={<AddComment/>} exact />
+  </Routes>
   const fetchCount = async (newsid) => {
     try {
       const response = await axios.get(`${config.url}/viewcomments/${newsid}`);
