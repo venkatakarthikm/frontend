@@ -1,4 +1,4 @@
-import {Route, Routes,Link, useNavigate } from 'react-router-dom';
+import {Route, Routes,Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import ReaderHome from './ReaderHome';
 import Contact from '../main/Contact';
@@ -7,7 +7,6 @@ import PageNotFound from '../main/PageNotFound';
 import './reader.css'
 
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
-import IconButton from '@mui/material/IconButton';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import ViewNews from '../main/News';
 import AddComment from './../main/AddComment';
@@ -17,13 +16,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ReaderNavBar() {
 
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('isReaderLoggedIn');
     localStorage.removeItem('reader');
     notifyInfo("logged out !")
-    navigate('/readerlogin');
+    //navigate('/readerlogin');
     window.location.reload()
   };
 
@@ -69,7 +67,13 @@ export default function ReaderNavBar() {
         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-        <li><IconButton style={{ color: "white" }} onClick={handleLogout}><LogoutSharpIcon/></IconButton></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li>
+        <div onClick={handleLogout} style={{ cursor: 'pointer' }}>
+      <Link to="/readerlogin">
+        <LogoutSharpIcon style={{ color: 'white' }} />
+      </Link>
+    </div>
       </ul>
       </nav>
 

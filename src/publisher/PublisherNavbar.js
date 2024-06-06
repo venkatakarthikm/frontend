@@ -2,10 +2,9 @@ import { Route, Routes, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import PublisherHome from './PublisherHome';
 import PageNotFound from '../main/PageNotFound';
-import '../main/style.css'
+import '../reader/reader.css'
 
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
-import IconButton from '@mui/material/IconButton';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import PublishNews from './PublishNews';
 import ViewMyNews from './ViewMyNews';
@@ -79,13 +78,18 @@ export default function PublisherNavbar() {
               <Link to="/viewmynews">View My NEWS</Link>
             </div>
           </li>
-          <li>
-            <Link to="/publisherlogin">
-            <IconButton style={{ color: "white" }} onClick={handleLogout}>
-              <LogoutSharpIcon />
-            </IconButton>
-            </Link>
-          </li>
+          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+          <div onClick={handleLogout} style={{ cursor: 'pointer' }}>
+      <Link to="/publisherlogin">
+        <LogoutSharpIcon style={{ color: 'white' }} />
+      </Link>
+    </div>
         </ul>
       </nav>
 

@@ -8,6 +8,15 @@
     overflow: hidden;
   }
   
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .container {
+    background-color: white;
+  }
+  
   .card:hover {
     transform: scale(1.01); /* Increase size on hover */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
