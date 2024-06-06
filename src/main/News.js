@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import axios from "axios";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import CommentIcon from "@mui/icons-material/Comment";

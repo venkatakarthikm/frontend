@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './mynews.css';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import Alert from '@mui/material/Alert';
@@ -7,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import CommentIcon from '@mui/icons-material/Comment';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material'; // Import Dialog components
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import config from '../config';
@@ -17,8 +18,8 @@ export default function ViewMyNews() {
   const [news, setNews] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [counts, setCounts] = useState({});
-  const [openDialog, setOpenDialog] = useState(false); // State for controlling the dialog
-  const [deleteNewsId, setDeleteNewsId] = useState(null); // State to store news id to be deleted
+  const [openDialog, setOpenDialog] = useState(false);
+  const [deleteNewsId, setDeleteNewsId] = useState(null);
 
   useEffect(() => {
     const storedPublisherData = localStorage.getItem('publisher');
@@ -40,7 +41,7 @@ export default function ViewMyNews() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth" // For smooth scrolling
+      behavior: "smooth"
     });
   };
 
@@ -50,19 +51,18 @@ export default function ViewMyNews() {
       const response = await axios.get(`${config.url}/viewmynewstodelete/${newsid}`);
       if (response.data != null) {
         localStorage.setItem('newsdata', JSON.stringify(response.data));
-        window.location.href = '/addcomment/';
       }
     } catch (errorr) {
       notifyInfo(errorr.message);
     }
   };
+
   const update = async (newsid) => {
     try {
       localStorage.setItem('newsid', newsid);
       const response = await axios.get(`${config.url}/viewmynewstodelete/${newsid}`);
       if (response.data != null) {
         localStorage.setItem('newsdata', JSON.stringify(response.data));
-        window.location.href = '/updatemynews/';
       }
     } catch (error) {
       console.error(error.message);
@@ -91,7 +91,6 @@ export default function ViewMyNews() {
   },);
 
   useEffect(() => {
-    // Fetch count for each news item
     if (Array.isArray(news)) {
       news.forEach(newsItem => {
         fetchCount(newsItem.newsid);
@@ -108,26 +107,26 @@ export default function ViewMyNews() {
     draggable: true,
     progress: undefined,
     theme: "dark",
-    });
+  });
 
   const deleteNews = async (newsid) => {
-    setDeleteNewsId(newsid); // Set the news id to be deleted
-    setOpenDialog(true); // Open the dialog
+    setDeleteNewsId(newsid);
+    setOpenDialog(true);
   };
 
   const handleDeleteConfirmation = async () => {
     try {
       await axios.delete(`${config.url}/deletemynews/${deleteNewsId}`);
       fetchNews();
-      setShowAlert(true); // Show alert on successful deletion
-      setOpenDialog(false); // Close the dialog after successful deletion
+      setShowAlert(true);
+      setOpenDialog(false);
     } catch (errorr) {
       notifyInfo(errorr.message);
     }
   };
 
   const handleCancelDelete = () => {
-    setOpenDialog(false); // Close the dialog
+    setOpenDialog(false);
   };
 
   return (
@@ -139,9 +138,9 @@ export default function ViewMyNews() {
       )}
       {Array.isArray(news) && news.length > 0 ? (
         news.map((newsItem, index) => (
-          <div key={index} class="card">
-            <div class="row">
-              <div class="text">
+          <div key={index} className="card">
+            <div className="row">
+              <div className="text">
                 <img src={newsItem.imagelink} alt="" />
                 <h2>{newsItem.title}</h2>
                 <h5>Date & Time: {newsItem.postedtime}</h5>
@@ -151,9 +150,31 @@ export default function ViewMyNews() {
               </div>
             </div>
             <div>
-              <button className='bt' onClick={() => viewComment(newsItem.newsid)} style={{ marginRight: '10px' }} title="View Comment" ><CommentIcon /></button>
-              <button onClick={() => update(newsItem.newsid)} style={{ marginRight: '10px' }} title="Edit News" ><EditIcon /></button>
-              <button onClick={() => deleteNews(newsItem.newsid)} title="Delete news" ><DeleteForeverIcon /></button>
+              <Link to="/addcomment">
+                <button
+                  className='bt'
+                  onClick={() => viewComment(newsItem.newsid)}
+                  style={{ marginRight: '10px' }}
+                  title="View Comment"
+                >
+                  <CommentIcon />
+                </button>
+              </Link>
+              <Link to="/updatemynews">
+                <button
+                  onClick={() => update(newsItem.newsid)}
+                  style={{ marginRight: '10px' }}
+                  title="Edit News"
+                >
+                  <EditIcon />
+                </button>
+              </Link>
+              <button
+                onClick={() => deleteNews(newsItem.newsid)}
+                title="Delete news"
+              >
+                <DeleteForeverIcon />
+              </button>
             </div>
           </div>
         ))
