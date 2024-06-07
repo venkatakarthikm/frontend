@@ -34,6 +34,7 @@ export default function App() {
     setIsReaderLoggedIn(true);
   };
 
+  
   return (
     <div className="App">
       <Router>
@@ -62,6 +63,9 @@ export default function App() {
           </>
         )}
       </Router>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8499995112935035"
+     crossorigin="anonymous"></script>
     </div>
+    
   );
 }

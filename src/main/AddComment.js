@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import config from '../config';
 
 export default function AddComment() {
+  
     const [publisherData, setPublisherData] = useState('');
     const [readerData,setReaderData] = useState("");
     const [newsData, setNewsData] = useState("");

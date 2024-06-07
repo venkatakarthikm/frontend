@@ -31,6 +31,7 @@ export default function News() {
   };
 
   const addComment = async (newsid) => {
+    window.location.reload();
     try {
       localStorage.setItem("newsid", newsid);
       const response = await axios.get(
@@ -130,10 +131,9 @@ export default function News() {
                   </div>
                 </div>
               </div>
-              <div>
+              <div onClick={() => addComment(newsItem.newsid)}>
                 <Link to="/addcomment">
                   <button
-                    onClick={() => addComment(newsItem.newsid)}
                     style={{ marginRight: "10px" }}
                     title="Add Comment"
                   >
