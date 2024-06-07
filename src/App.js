@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PreloaderWrapper from './main/Preloader';
 
+import AdsComponent from './AdsComponent';
 
 export default function App() {
   const [isPublisherLoggedIn, setIsPublisherLoggedIn] = useState(false);
@@ -43,13 +44,21 @@ export default function App() {
           <PublisherNavbar />
           <ToastContainer />
           <PreloaderWrapper/>
+          <>
+            <h1>Place To Show Google AdSense</h1>
+            <AdsComponent dataAdSlot='2961221610' />
+          </>
           </>
           
-        ): isReaderLoggedIn ?(
+        ): isReaderLoggedIn ? (
           <>
           <ReaderNavBar/>
           <ToastContainer />
           <PreloaderWrapper/>
+          <>
+            <h1>Place To Show Google AdSense</h1>
+            <AdsComponent dataAdSlot='2961221610' />
+          </>
           </>
 
         ): (
@@ -60,11 +69,13 @@ export default function App() {
           />
           <ToastContainer />
           <PreloaderWrapper/>
+          <>
+            <h1>Place To Show Google AdSense</h1>
+            <AdsComponent dataAdSlot='2961221610' />
+          </>
           </>
         )}
       </Router>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8499995112935035"
-     crossorigin="anonymous"></script>
     </div>
     
   );
