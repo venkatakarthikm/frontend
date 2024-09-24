@@ -46,7 +46,7 @@ export default function App() {
           <PreloaderWrapper/>
           <>
             <h1>Place To Show Google AdSense</h1>
-            <AdsComponent dataAdSlot='2961221610' />
+           sComponent dataAdSlot='2961221610' />
           </>
           </>
           
